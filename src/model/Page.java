@@ -6,7 +6,7 @@ import java.util.Date;
 import action.PageAction;
 
 public class Page {
-	protected Member owner;
+	protected String memberID;
 	protected String pageUrl;
 	protected String pageName;
 	protected String description;
@@ -18,13 +18,24 @@ public class Page {
 	protected ArrayList<Post> newsFeed;
 	
 	protected PageAction pageAction;
-	
-	public Member getOwner() {
-		return owner;
+
+	/*
+	*  Constructor for page
+	* */
+	public Page(String memberID, String memberName){
+		this.memberID = memberID;
+		this.pageUrl = "htttp://mini-facebook/user?=" + this.memberID;
+		this.pageName = "Public Page of " + memberName;
+		this.description = "Welcome! This is my public page. Please leave some comments!";
+		this.createAt = new Date();
+		this.timeLine = new ArrayList<Post>();
+		this.friendList = new ArrayList<Member>();
+		this.newsFeed = new ArrayList<Post>();
+		this.pageAction = new PageAction();
+		System.out.println("Post: " + this.pageName + " created!");
 	}
-	public void setOwner(Member owner) {
-		this.owner = owner;
-	}
+
+
 	public String getPageUrl() {
 		return pageUrl;
 	}
@@ -55,7 +66,31 @@ public class Page {
 	public void setModifiedAt(Date modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
-	
+
+	public ArrayList<Post> getTimeLine() {
+		return timeLine;
+	}
+
+	public void setTimeLine(ArrayList<Post> timeLine) {
+		this.timeLine = timeLine;
+	}
+
+	public ArrayList<Member> getFriendList() {
+		return friendList;
+	}
+
+	public void setFriendList(ArrayList<Member> friendList) {
+		this.friendList = friendList;
+	}
+
+	public ArrayList<Post> getNewsFeed() {
+		return newsFeed;
+	}
+
+	public void setNewsFeed(ArrayList<Post> newsFeed) {
+		this.newsFeed = newsFeed;
+	}
+
 	public PageAction getPageAction() {
 		return pageAction;
 	}
