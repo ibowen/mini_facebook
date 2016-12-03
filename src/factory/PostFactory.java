@@ -13,15 +13,15 @@ public class PostFactory extends AbstractFactory{
 	}
 
 	@Override
-	public Post getPost() {
+	public Page getPage(String memberID, String memberName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Page getPage(String memberID, String memberName) {
+	public Post getPost(String memberID, String postText, String videoUrl, String photoUrl) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Post(memberID, postText, videoUrl, photoUrl);
 	}
 
 }

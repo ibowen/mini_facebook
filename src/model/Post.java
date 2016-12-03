@@ -2,17 +2,31 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
+
+import action.PageAction;
 
 public class Post {
 	
 	private String postID;
-	private Member owner;
+	private String memberID;
 	private String postText;
 	private String videoUrl;
 	private String photoUrl;
 	private Date createAt;
 	ArrayList<Post> comments;
 	
+	public Post(String memberID, String postText,
+			String videoUrl, String photoUrl) {
+		super();
+		this.postID = UUID.randomUUID().toString();
+		this.memberID = memberID;
+		this.postText = postText;
+		this.videoUrl = videoUrl;
+		this.photoUrl = photoUrl;
+		this.createAt = new Date();
+	}
+
 	public String getPostID() {
 		return postID;
 	}
@@ -21,12 +35,12 @@ public class Post {
 		this.postID = postID;
 	}
 
-	public Member getOwner() {
-		return owner;
+	public String getMemberID() {
+		return memberID;
 	}
 
-	public void setOwner(Member owner) {
-		this.owner = owner;
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
 	}
 
 	public String getPostText() {

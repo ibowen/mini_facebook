@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import action.PublicPageAction;
 
 public class PublicPage extends Page {
+	public PublicPage(String memberID, String memberName, String address, String category) {
+		// TODO Auto-generated constructor stub
+		super(memberID, memberName);
+		this.address = address;
+		this.category = category;
+	}
+
 	private String address;
 	private String category;
 	private ArrayList<Member> likelist;
@@ -27,7 +34,7 @@ public class PublicPage extends Page {
 	public void addLike(Member member) {
 		// add likers
 		PublicPageAction publicPageAction = (PublicPageAction)(this.pageAction);
-		publicPageAction.addLikeTempate(member);
+		publicPageAction.addLike(this, member);
 	}
 	
 }

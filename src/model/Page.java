@@ -120,8 +120,8 @@ public class Page {
 		}
 	}
 	
-	public void addFriend(Member member) {
+	public void addFriend(Page page, Member member) {
 		// add friends
-		this.pageAction.addFriendTemplate(member);
+		this.pageAction.addFriendTemplate(page, member);
 	}
 }

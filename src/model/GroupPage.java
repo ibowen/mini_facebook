@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import action.GroupPageAction;
 
 public class GroupPage extends Page {
+	private String groupName;
 	private ArrayList<Member> groupMemberList;
+
+	public GroupPage(String memberID, String memberName, String groupName) {
+		super(memberID, memberName);
+		this.groupName = groupName;
+	}
 
 	public ArrayList<Member> getGroupMemberList() {
 		return groupMemberList;
@@ -14,6 +20,6 @@ public class GroupPage extends Page {
 	public void addGroupMember(Member member) {
 		// add group member
 		GroupPageAction groupPageAction = (GroupPageAction)(this.pageAction);
-		groupPageAction.addGroupMemberTemplate(member);
+		groupPageAction.addGroupMemberTemplate(this, member);
 	}
 }
