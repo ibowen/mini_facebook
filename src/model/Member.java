@@ -9,21 +9,20 @@ import factory.PageFactory;
 
 
 public class Member {
-	protected String memberID;
-	protected String name;
-	protected String address;
-	protected Date createAt;
-	protected ArrayList<String> hobbies;
-	protected Page homePage;
-	protected ArrayList<PublicPage> publicPageList;
-	protected ArrayList<GroupPage> groupPageList;
+	private String memberID;
+	private String name;
+	private String address;
+	private Date createAt;
+	private ArrayList<String> hobbies;
+	private Page homePage;
+	private ArrayList<PublicPage> publicPageList;
+	private ArrayList<GroupPage> groupPageList;
 
 
 	/**
 	 * Constructor of the Member class
 	 * @param memberName is the name of the member
 	 * @param memberAddress records the address of the member
-	 * @param memberDate keep track of the date and time a member is created
 	 */
 	public Member(String memberName, String memberAddress) {
 		this.memberID =  UUID.randomUUID().toString();
@@ -131,7 +130,7 @@ public class Member {
 	 * Add more hobbies for the user
 	 * @param hobby string text name of the hobby of the member
 	 */
-	protected void addHobby(String hobby) {
+	public void addHobby(String hobby) {
 		this.hobbies.add(hobby);
 	}
 
@@ -140,7 +139,7 @@ public class Member {
 	 * Remove a hobby from the hobby list of the user
 	 * @param hobby
 	 */
-	protected void delHobby(String hobby) {
+	public void delHobby(String hobby) {
 		this.hobbies.remove(hobby);
 	}
 
