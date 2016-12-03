@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+
+import factory.FactoryProducer;
 import factory.PageFactory;
 
 
@@ -23,12 +25,12 @@ public class Member {
 	 * @param memberAddress records the address of the member
 	 * @param memberDate keep track of the date and time a member is created
 	 */
-	public Member(String memberName, String memberAddress, Date memberDate) {
+	public Member(String memberName, String memberAddress) {
 		this.memberID =  UUID.randomUUID().toString();
 		this.name = memberName;
 		this.address = memberAddress;
 		this.createAt = new Date();
-		this.homePage = PageFactory.getPage(this.memberID, this.name);
+		this.homePage = FactoryProducer.getFactory("PAGE").getPage(this.memberID, this.name);
 		this.publicPageList = new ArrayList<PublicPage>();
 		this.groupPageList = new ArrayList<GroupPage>();
 	}
