@@ -1,6 +1,7 @@
 package action;
 
 import factory.AbstractFactory;
+import factory.FactoryProducer;
 import java.util.ArrayList;
 import model.Member;
 import model.Page;
@@ -32,7 +33,7 @@ public class PageAction {
      */
     public void addFriendTemplate(Page page, Member member) {
         // a tempate method to add friends
-        ArrayList<Post> friendList = page.getFriendList();
+        ArrayList<Member> friendList = page.getFriendList();
         friendList.add(member);
         page.setFriendList(friendList);
         System.out.print("Member: " + member + " is added in friendList.");         
@@ -61,9 +62,8 @@ public class PageAction {
      */
     public void addTimeLine(Page page, Post post) {
         // add a post in timeline
-        ArrayList<Post> timeLine = page.getTimeline();
+        ArrayList<Post> timeLine = page.getTimeLine();
         timeLine.add(post);
-        page.setTimeline(timeLine);
         System.out.print("Post: post is added in my timeline.");       
     }
 

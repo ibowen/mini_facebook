@@ -16,10 +16,9 @@ public class PublicPageAction extends PageAction {
      * @param page
      * @param member 
      */
-    public void addLikeTempate(PublicPage page, Member member) {
+    public void addLike(PublicPage page, Member member) {
         // a template method to add likes
         ArrayList<Member> likeList = page.getLikelist();
         likeList.add(member);
-        page.setLikeList(likeList);
     }
 }
