@@ -5,10 +5,11 @@ public class FactoryProducer {
 		if ("POST" == objName) {
 			return new PostFactory();
 		} else if ("PAGE" == objName) {
-			return new PostFactory();
+			return new PageFactory();
 		} else if ("MEMBER" == objName) {
 			return new MemberFactory();
+		} else {
+			return null;
 		}
-		return null;
 	}
 }

@@ -18,12 +18,12 @@ public class PageAction {
      * 
      * @param page 
      */
-    public void createPostTemplate(Page page) {
+    public void createPostTemplate(Page page, String postText, String video_url, String img_url) {
         // a template method to create a post
-        Post post = createPost();
+        Post post = createPost(page, postText, video_url, img_url);
         addTimeLine(page, post);
         addNewsFeed(page, post);
-        addFriendNewsFeed(page, post);        
+        addFriendNewsFeed(page, post);
     }
 
     /**
@@ -36,7 +36,8 @@ public class PageAction {
         ArrayList<Member> friendList = page.getFriendList();
         friendList.add(member);
         page.setFriendList(friendList);
-        System.out.print("Member: " + member + " is added in friendList.");         
+        int last = friendList.size() - 1;
+        System.out.println("Member: " + page.getFriendList().get(last).getName() + " is added in friendList.");
     }
     
     /**
@@ -45,13 +46,11 @@ public class PageAction {
      * @param page
      * @return 
      */
-    public Post createPost(Page page) {
+    public Post createPost(Page page, String postText, String video_url, String img_url) {
         // create a post
-        // ***** ToDo *****
         AbstractFactory postFactory = FactoryProducer.getFactory("POST");
-        // ***** ToDo *****
-        Post post = postFactory.getPost(page.getMemberID(), "New post by " + page.getMemberID().toString(), "vdo_url", "img_url");
-        System.out.print("Post: post is created.");
+        Post post = postFactory.getPost(page.getMemberID(), postText, video_url, img_url);
+        System.out.println("Post: Member - " + page.getMemberID() + " 's post is created.");
         return post;
     }
     
@@ -65,7 +64,7 @@ public class PageAction {
         // add a post in timeline
         ArrayList<Post> timeLine = page.getTimeLine();
         timeLine.add(post);
-        System.out.print("Post: post is added in my timeline.");       
+        System.out.println("Post: post is added in my timeline.");       
     }
 
     /**
@@ -79,7 +78,7 @@ public class PageAction {
         ArrayList<Post> newsFeed = page.getNewsFeed();
         newsFeed.add(post);
         page.setNewsFeed(newsFeed);
-        System.out.print("Post: post is added in my news feed.");       
+        System.out.println("Post: post is added in my news feed.");       
     }    
     
     /**
@@ -95,6 +94,6 @@ public class PageAction {
             Page friendPage = friend.getHomePage();
             addNewsFeed(friendPage, post);
         }
-        System.out.print("Post: post is added in friend news feed.");       
+        System.out.println("Post: post is added in friend news feed.");
     }    
 }

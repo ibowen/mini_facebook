@@ -25,14 +25,14 @@ public class Page {
 	public Page(String memberID, String memberName){
 		this.memberID = memberID;
 		this.pageUrl = "htttp://mini-facebook/user?=" + this.memberID;
-		this.pageName = "Public Page of " + memberName;
+		this.pageName = "Page of " + memberName;
 		this.description = "Welcome! This is my public page. Please leave some comments!";
 		this.createAt = new Date();
 		this.timeLine = new ArrayList<Post>();
 		this.friendList = new ArrayList<Member>();
 		this.newsFeed = new ArrayList<Post>();
 		this.pageAction = new PageAction();
-		System.out.println("Post: " + this.pageName + " created!");
+		System.out.println("Page: " + this.pageName + " created!");
 	}
 
 	public void setPageAction(PageAction pageAction) {
@@ -57,7 +57,7 @@ public class Page {
 		this.pageUrl = pageUrl;
 	}
 	public String getPageName() {
-		return pageName;
+		return this.pageName;
 	}
 	public void setPageName(String pageName) {
 		this.pageName = pageName;
@@ -111,7 +111,7 @@ public class Page {
 	public void showTimeLine() {
 		// show timeline of the current page
 		for (Post p : this.timeLine) {
-			p.displayPost();
+			p.showPost();
 		}
 	}
 	
@@ -120,22 +120,22 @@ public class Page {
 		return this.friendList;
 	}
 	
-	public void disPlayNewsFeed() {
-		// display news of friends of the current page
+	public void showNewsFeed() {
+		// show news of friends of the current page
 		for (Post p : this.newsFeed) {
-			p.displayPost();
+			p.showPost();
 		}
 	}
 	
-	public void createPost() {
+	public void createPost(String postText, String video_url, String img_url) {
 		// create post template
 		if (this.pageAction != null) {
-			this.pageAction.createPostTemplate(this);
+			this.pageAction.createPostTemplate(this, postText, video_url, img_url);
 		}
 	}
 	
-	public void addFriend(Page page, Member member) {
+	public void addFriend(Member member) {
 		// add friends
-		this.pageAction.addFriendTemplate(page, member);
+		this.pageAction.addFriendTemplate(this, member);
 	}
 }

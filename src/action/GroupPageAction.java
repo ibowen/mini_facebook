@@ -25,10 +25,10 @@ public class GroupPageAction extends PageAction {
         if(repOK(page)){
             ArrayList<Member> friendList = page.getFriendList();
             friendList.add(member);
-            System.out.print("Member: " + member + " is added in friendList.");
+            System.out.println("Member: " + member + " is added in friendList.");
             return;
         }
-        System.out.print("Member: " + member + " can not be added into group page. Out of number limit!");
+        System.out.println("Member: " + member + " can not be added into group page. Out of number limit!");
     }   
 
     /**

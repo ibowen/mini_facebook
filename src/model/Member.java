@@ -32,6 +32,7 @@ public class Member {
 		this.homePage = FactoryProducer.getFactory("PAGE").getPage(this.memberID, this.name);
 		this.publicPageList = new ArrayList<PublicPage>();
 		this.groupPageList = new ArrayList<GroupPage>();
+		this.hobbies = new ArrayList<String>();
 	}
 
 

@@ -79,9 +79,10 @@ public class Post {
 		return comments;
 	}
 
-	public void displayPost() {
+	public void showPost() {
 		// TODO Auto-generated method stub
-		System.out.println("displayPost");
+
+		System.out.println("Member: " + this.memberID + " | Post: " + this.getPostText());
 	}
 	
 	public void addComment(Post post) {
