@@ -1,10 +1,25 @@
 package action;
 
+import java.util.ArrayList;
 import model.Member;
+import model.PublicPage;
 
+/**
+ * This is a class of public page's action extending from PageAction. 
+ * 
+ * @author kuo
+ */
 public class PublicPageAction extends PageAction {
-	public void addLikeTempate(Member member) {
-		// a template method to add likes
-		
-	}
+    /**
+     * Add like from a member into a public page
+     * 
+     * @param page
+     * @param member 
+     */
+    public void addLikeTempate(PublicPage page, Member member) {
+        // a template method to add likes
+        ArrayList<Member> likeList = page.getLikelist();
+        likeList.add(member);
+        page.setLikeList(likeList);
+    }
 }
