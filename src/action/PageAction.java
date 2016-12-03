@@ -42,14 +42,15 @@ public class PageAction {
     /**
      * Create a post message
      * 
-     * @return Post
+     * @param page
+     * @return 
      */
-    public Post createPost() {
+    public Post createPost(Page page) {
         // create a post
         // ***** ToDo *****
         AbstractFactory postFactory = FactoryProducer.getFactory("POST");
         // ***** ToDo *****
-        Post post = postFactory.getPost("New Post!");
+        Post post = postFactory.getPost(page.getMemberID(), "New post by " + page.getMemberID().toString(), "vdo_url", "img_url");
         System.out.print("Post: post is created.");
         return post;
     }
