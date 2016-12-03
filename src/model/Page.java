@@ -35,6 +35,20 @@ public class Page {
 		System.out.println("Post: " + this.pageName + " created!");
 	}
 
+	public void setPageAction(PageAction pageAction) {
+		this.pageAction = pageAction;
+	}
+
+
+	public String getMemberID() {
+		return memberID;
+	}
+
+
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
+	}
+
 
 	public String getPageUrl() {
 		return pageUrl;
