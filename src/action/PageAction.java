@@ -46,7 +46,7 @@ public class PageAction {
     public Post createPost() {
         // create a post
         // ***** ToDo *****
-        AbstractFactory postFactory = FactoryProducer("POST");
+        AbstractFactory postFactory = FactoryProducer.getFactory("POST");
         // ***** ToDo *****
         Post post = postFactory.getPost("New Post!");
         System.out.print("Post: post is created.");
