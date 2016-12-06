@@ -34,11 +34,11 @@ public class PageAction {
      * @param page
      * @param postID 
      */
-    public void deletePostTemplate(Page page, String postID){
+    public void deletePostTemplate(Page page, Post post){
         // a template method to delete a post
-        removeTimeLine(page, postID);
-        removeNewsFeed(page, postID);
-        removeFriendNewsFeed(page, postID);        
+        removeTimeLine(page, post);
+        removeNewsFeed(page, post);
+        removeFriendNewsFeed(page, post);        
     }
     
     /**
@@ -61,12 +61,12 @@ public class PageAction {
      * @param page
      * @param memberID 
      */
-    public void deleteFriendTemplate(Page page, Member memberID){
+    public void deleteFriendTemplate(Page page, Member member){
         // a template method to delete a post
         ArrayList<Member> friendList = page.getFriendList();
-        for(Member member: friendList){
-            if(memberID.equals(member.getMemberID())){
-                friendList.remove(member);
+        for(Member pageMember: friendList){
+            if(member.equals(pageMember)){
+                friendList.remove(pageMember);
                 return;
             }
         }        
@@ -103,13 +103,13 @@ public class PageAction {
      * Remove a post from time line
      * 
      * @param page
-     * @param postID 
+     * @param post 
      */
-    public void removeTimeLine(Page page, String postID){
+    public void removeTimeLine(Page page, Post post){
         ArrayList<Post> timeLine = page.getTimeLine();
-        for(Post post: timeLine){
-            if(postID.equals(post.getPostID())){
-                timeLine.remove(post);
+        for(Post timeLinePost: timeLine){
+            if(post.equals(timeLinePost)){
+                timeLine.remove(timeLinePost);
                 return;
             }
         }
@@ -133,13 +133,13 @@ public class PageAction {
      * Remove a post from time line
      * 
      * @param page
-     * @param postID 
+     * @param post
      */
-    public void removeNewsFeed(Page page, String postID){
+    public void removeNewsFeed(Page page, Post post){
         ArrayList<Post> newsFeed = page.getNewsFeed();
-        for(Post post: newsFeed){
-            if(postID.equals(post.getPostID())){
-                newsFeed.remove(post);
+        for(Post nfPost: newsFeed){
+            if(post.equals(nfPost)){
+                newsFeed.remove(nfPost);
                 return;
             }
         }
@@ -165,14 +165,14 @@ public class PageAction {
      * Remove a post into friend news feed of my page
      * 
      * @param page
-     * @param postID 
+     * @param post 
      */
-    public void removeFriendNewsFeed(Page page, String postID) {
+    public void removeFriendNewsFeed(Page page, Post post) {
         // add a post in timeline
         ArrayList<Member> friendList = page.getFriendList();
         for(Member friend: friendList){
             Page friendPage = friend.getHomePage();
-            removeNewsFeed(friendPage, postID);
+            removeNewsFeed(friendPage, post);
         }
         System.out.println("Post: post is added in friend news feed.");
     }      
