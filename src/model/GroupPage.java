@@ -20,4 +20,17 @@ public class GroupPage extends Page {
 		GroupPageAction groupPageAction = (GroupPageAction)(this.pageAction);
 		groupPageAction.addGroupMemberTemplate(this, member);
 	}
+        
+	public void removeGroupMember(Member member) {
+		// add group member
+		GroupPageAction groupPageAction = (GroupPageAction)(this.pageAction);
+		groupPageAction.addGroupMemberTemplate(this, member);
+                ArrayList<Member> friendList = this.getFriendList();
+                for(Member groupMember: friendList){
+                    if(member.equals(groupMember.getMemberID())){
+                        friendList.remove(groupMember);
+                        return;
+                    }
+                }                    
+	}        
 }

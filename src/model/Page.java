@@ -137,8 +137,20 @@ public class Page {
 		}
 	}
 	
+        public void deletePost(Post post) {
+		// create post template
+		if (this.pageAction != null) {
+			this.pageAction.deletePostTemplate(this, post);
+		}
+	}
+        
 	public void addFriend(Member member) {
 		// add friends
 		this.pageAction.addFriendTemplate(this, member);
+	}
+        
+        public void removeFriend(Member member) {
+		// add friends
+		this.pageAction.deleteFriendTemplate(this, member);
 	}
 }
