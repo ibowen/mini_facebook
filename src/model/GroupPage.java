@@ -8,8 +8,8 @@ public class GroupPage extends Page {
 	private ArrayList<Member> groupMemberList;
 	public GroupPage(String memberID, String groupName) {
 		super(memberID, groupName);
-                super.pageAction = new GroupPageAction();
-                super.pageUrl = "htttp://mini-facebook/grouppage?=" + super.pageID;
+		super.pageAction = new GroupPageAction();
+		super.pageUrl = "htttp://mini-facebook/grouppage?=" + super.pageID;
 		this.groupMemberList = new ArrayList<Member>();
 	}
 	public ArrayList<Member> getGroupMemberList() {
@@ -33,5 +33,14 @@ public class GroupPage extends Page {
                         return;
                     }
                 }                    
-	}        
+	}
+	@Override
+	public void createPost(String postText, String video_url, String img_url) {
+		// create post template
+		if (super.pageAction != null) {
+			GroupPageAction groupPageAction = (GroupPageAction)(super.pageAction);
+			groupPageAction.createPostTemplate(this, postText, video_url, img_url);
+		}
+	}
+
 }

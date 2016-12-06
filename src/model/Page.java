@@ -137,7 +137,7 @@ public class Page {
 		}
 	}
 	
-        public void deletePost(Post post) {
+	public void deletePost(Post post) {
 		// create post template
 		if (this.pageAction != null) {
 			this.pageAction.deletePostTemplate(this, post);

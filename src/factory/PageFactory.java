@@ -15,14 +15,16 @@ public class PageFactory extends AbstractFactory{
 	}
 	public PublicPage getPublicPage(Member member, String publicPageName, String address, String category) {
 		PublicPage publicPage = new PublicPage(member.getMemberID(), publicPageName, address, category);
-                member.getPublicPageList().add(publicPage);
-                return publicPage;
+		publicPage.getLikelist().add(member);
+		member.getPublicPageList().add(publicPage);
+		return publicPage;
 	}
 	
 	public GroupPage getGroupPage(Member member, String groupName) {
 		GroupPage groupPage = new GroupPage(member.getMemberID(), groupName);
-                member.getGroupPageList().add(groupPage);
-                return groupPage;
+		groupPage.addGroupMember(member);
+		member.getGroupPageList().add(groupPage);
+		return groupPage;
 	}
 
 	@Override

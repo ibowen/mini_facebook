@@ -52,7 +52,7 @@ public class PageAction {
         friendList.add(member);
         page.setFriendList(friendList);
         int last = friendList.size() - 1;
-        System.out.println("Member: " + page.getFriendList().get(last).getName() + " is added in friendList.");
+        //System.out.println("Member: " + page.getFriendList().get(last).getName() + " is added in friendList.");
     }
     
     /**
@@ -82,7 +82,7 @@ public class PageAction {
         // create a post
         AbstractFactory postFactory = FactoryProducer.getFactory("POST");
         Post post = postFactory.getPost(page.getMemberID(), postText, video_url, img_url);
-        System.out.println("Post: Member - " + page.getMemberID() + " 's post is created.");
+        //System.out.println("Post: Member - " + page.getMemberID() + " 's post is created.");
         return post;
     }
     
@@ -96,7 +96,7 @@ public class PageAction {
         // add a post in timeline
         ArrayList<Post> timeLine = page.getTimeLine();
         timeLine.add(post);
-        System.out.println("Post: post is added in my timeline.");       
+        //System.out.println("Post: post is added in my timeline.");
     }
 
     /**
@@ -126,7 +126,7 @@ public class PageAction {
         ArrayList<Post> newsFeed = page.getNewsFeed();
         newsFeed.add(post);
         page.setNewsFeed(newsFeed);
-        System.out.println("Post: post is added in my news feed.");       
+        //System.out.println("Post: post is added in my news feed.");
     }    
     
     /**
@@ -158,7 +158,7 @@ public class PageAction {
             Page friendPage = friend.getHomePage();
             addNewsFeed(friendPage, post);
         }
-        System.out.println("Post: post is added in friend news feed.");
+        //System.out.println("Post: post is added in friend news feed.");
     }  
     
     /**
@@ -174,6 +174,6 @@ public class PageAction {
             Page friendPage = friend.getHomePage();
             removeNewsFeed(friendPage, post);
         }
-        System.out.println("Post: post is added in friend news feed.");
+        //System.out.println("Post: post is added in friend news feed.");
     }      
 }
