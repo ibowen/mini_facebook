@@ -10,6 +10,7 @@ public class GroupPage extends Page {
 		super(memberID, groupName);
                 super.pageAction = new GroupPageAction();
                 super.pageUrl = "htttp://mini-facebook/grouppage?=" + super.pageID;
+		this.groupMemberList = new ArrayList<Member>();
 	}
 	public ArrayList<Member> getGroupMemberList() {
 		return groupMemberList;

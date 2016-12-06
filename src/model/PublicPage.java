@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import action.PublicPageAction;
 
 public class PublicPage extends Page {
+	private String address;
+	private String category;
+	private ArrayList<Member> likelist;
+
 	public PublicPage(String memberID, String publicPageName, String address, String category) {
 		// TODO Auto-generated constructor stub
 		super(memberID, publicPageName);
@@ -11,11 +15,10 @@ public class PublicPage extends Page {
 		this.category = category;
                 super.pageAction = new PublicPageAction();
                 super.pageUrl = "htttp://mini-facebook/publicpage?=" + super.pageID;
+		this.likelist = new ArrayList<Member>();
 	}
 
-	private String address;
-	private String category;
-	private ArrayList<Member> likelist;
+
 	public String getAddress() {
 		return address;
 	}
@@ -29,7 +32,7 @@ public class PublicPage extends Page {
 		this.category = category;
 	}
 	public ArrayList<Member> getLikelist() {
-		return likelist;
+		return this.likelist;
 	}
 	
 	public void addLike(Member member) {

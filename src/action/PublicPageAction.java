@@ -18,7 +18,9 @@ public class PublicPageAction extends PageAction {
      */
     public void addLike(PublicPage page, Member member) {
         // a template method to add likes
+
         ArrayList<Member> likeList = page.getLikelist();
         likeList.add(member);
+
     }
 }

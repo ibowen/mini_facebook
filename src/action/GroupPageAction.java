@@ -23,8 +23,8 @@ public class GroupPageAction extends PageAction {
     public void addGroupMemberTemplate(GroupPage page, Member member) {
         // a tempate method to add friends
         if(repOK(page)){
-            ArrayList<Member> friendList = page.getFriendList();
-            friendList.add(member);
+            ArrayList<Member> memberList = page.getGroupMemberList();
+            memberList.add(member);
             System.out.println("Member: " + member + " is added in friendList.");
             return;
         }
@@ -38,7 +38,7 @@ public class GroupPageAction extends PageAction {
      * @return 
      */
     private boolean repOK(GroupPage page) {
-        ArrayList<Member> friendList = page.getFriendList();
+        ArrayList<Member> friendList = page.getGroupMemberList();
         return friendList.size() <= memberLimit;
     }
 }

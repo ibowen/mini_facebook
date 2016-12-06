@@ -82,7 +82,7 @@ public class Post {
 	public void showPost() {
 		// TODO Auto-generated method stub
 
-		System.out.println("Member: " + this.memberID + " | Post: " + this.getPostText());
+		System.out.println("Post: " + this.getPostText());
 	}
 	
 	public void addComment(Post post) {
