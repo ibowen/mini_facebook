@@ -3,6 +3,8 @@ package action;
 import factory.AbstractFactory;
 import factory.FactoryProducer;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import model.Member;
 import model.Page;
 import model.Post;
@@ -27,6 +29,19 @@ public class PageAction {
     }
 
     /**
+     * Delete a post in my page
+     * 
+     * @param page
+     * @param postID 
+     */
+    public void deletePostTemplate(Page page, String postID){
+        // a template method to delete a post
+        removeTimeLine(page, postID);
+        removeNewsFeed(page, postID);
+        removeFriendNewsFeed(page, postID);        
+    }
+    
+    /**
      * Add a member into friend list of my page
      * 
      * @param member 
@@ -38,6 +53,23 @@ public class PageAction {
         page.setFriendList(friendList);
         int last = friendList.size() - 1;
         System.out.println("Member: " + page.getFriendList().get(last).getName() + " is added in friendList.");
+    }
+    
+    /**
+     * Delete a member into friend list of my page
+     * 
+     * @param page
+     * @param memberID 
+     */
+    public void deleteFriendTemplate(Page page, Member memberID){
+        // a template method to delete a post
+        ArrayList<Member> friendList = page.getFriendList();
+        for(Member member: friendList){
+            if(memberID.equals(member.getMemberID())){
+                friendList.remove(member);
+                return;
+            }
+        }        
     }
     
     /**
@@ -68,6 +100,22 @@ public class PageAction {
     }
 
     /**
+     * Remove a post from time line
+     * 
+     * @param page
+     * @param postID 
+     */
+    public void removeTimeLine(Page page, String postID){
+        ArrayList<Post> timeLine = page.getTimeLine();
+        for(Post post: timeLine){
+            if(postID.equals(post.getPostID())){
+                timeLine.remove(post);
+                return;
+            }
+        }
+    }
+    
+    /**
      * Add a post into the news feed of my page
      * 
      * @param page
@@ -80,6 +128,22 @@ public class PageAction {
         page.setNewsFeed(newsFeed);
         System.out.println("Post: post is added in my news feed.");       
     }    
+    
+    /**
+     * Remove a post from time line
+     * 
+     * @param page
+     * @param postID 
+     */
+    public void removeNewsFeed(Page page, String postID){
+        ArrayList<Post> newsFeed = page.getNewsFeed();
+        for(Post post: newsFeed){
+            if(postID.equals(post.getPostID())){
+                newsFeed.remove(post);
+                return;
+            }
+        }
+    } 
     
     /**
      * Add a post into friend news feed of my page
@@ -95,5 +159,21 @@ public class PageAction {
             addNewsFeed(friendPage, post);
         }
         System.out.println("Post: post is added in friend news feed.");
-    }    
+    }  
+    
+    /**
+     * Remove a post into friend news feed of my page
+     * 
+     * @param page
+     * @param postID 
+     */
+    public void removeFriendNewsFeed(Page page, String postID) {
+        // add a post in timeline
+        ArrayList<Member> friendList = page.getFriendList();
+        for(Member friend: friendList){
+            Page friendPage = friend.getHomePage();
+            removeNewsFeed(friendPage, postID);
+        }
+        System.out.println("Post: post is added in friend news feed.");
+    }      
 }
