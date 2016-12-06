@@ -13,12 +13,16 @@ public class PageFactory extends AbstractFactory{
 		// TODO Auto-generated method stub
 		return new Page(memberID, memberName);
 	}
-	public PublicPage getPublicPage(String memberID, String memberName, String address, String category) {
-		return new PublicPage(memberID, memberName, address, category);
+	public PublicPage getPublicPage(Member member, String publicPageName, String address, String category) {
+		PublicPage publicPage = new PublicPage(member.getMemberID(), publicPageName, address, category);
+                member.getPublicPageList().add(publicPage);
+                return publicPage;
 	}
 	
-	public GroupPage getGroupPage(String memberID, String memberName, String groupName) {
-		return new GroupPage(memberID, memberName, groupName);
+	public GroupPage getGroupPage(Member member, String groupName) {
+		GroupPage groupPage = new GroupPage(member.getMemberID(), groupName);
+                member.getGroupPageList().add(groupPage);
+                return groupPage;
 	}
 
 	@Override

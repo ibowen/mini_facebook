@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import action.PageAction;
+import java.util.UUID;
 
 public class Page {
 	protected String memberID;
+        protected String pageID;
 	protected String pageUrl;
 	protected String pageName;
 	protected String description;
@@ -22,10 +24,11 @@ public class Page {
 	/*
 	*  Constructor for page
 	* */
-	public Page(String memberID, String memberName){
+	public Page(String memberID, String pageName){
 		this.memberID = memberID;
-		this.pageUrl = "htttp://mini-facebook/user?=" + this.memberID;
-		this.pageName = "Page of " + memberName;
+                this.pageID = UUID.randomUUID().toString();
+		this.pageUrl = "htttp://mini-facebook/user?=" + this.pageID;
+		this.pageName = "Page of " + pageName;
 		this.description = "Welcome! This is my public page. Please leave some comments!";
 		this.createAt = new Date();
 		this.timeLine = new ArrayList<Post>();

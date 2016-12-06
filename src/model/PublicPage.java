@@ -1,15 +1,16 @@
 package model;
 
 import java.util.ArrayList;
-
 import action.PublicPageAction;
 
 public class PublicPage extends Page {
-	public PublicPage(String memberID, String memberName, String address, String category) {
+	public PublicPage(String memberID, String publicPageName, String address, String category) {
 		// TODO Auto-generated constructor stub
-		super(memberID, memberName);
+		super(memberID, publicPageName);
 		this.address = address;
 		this.category = category;
+                super.pageAction = new PublicPageAction();
+                super.pageUrl = "htttp://mini-facebook/publicpage?=" + super.pageID;
 	}
 
 	private String address;

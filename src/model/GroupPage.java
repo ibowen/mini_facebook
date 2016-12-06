@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import action.GroupPageAction;
 
 public class GroupPage extends Page {
-	private String groupName;
 	private ArrayList<Member> groupMemberList;
-
-	public GroupPage(String memberID, String memberName, String groupName) {
-		super(memberID, memberName);
-		this.groupName = groupName;
+	public GroupPage(String memberID, String groupName) {
+		super(memberID, groupName);
+                super.pageAction = new GroupPageAction();
+                super.pageUrl = "htttp://mini-facebook/grouppage?=" + super.pageID;
 	}
-
 	public ArrayList<Member> getGroupMemberList() {
 		return groupMemberList;
 	}
